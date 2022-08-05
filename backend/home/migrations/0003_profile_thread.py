@@ -9,31 +9,54 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('home', '0002_contact_threadaction_verificationcode'),
+        ("home", "0002_contact_threadaction_verificationcode"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Thread',
+            name="Thread",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=256)),
-                ('thread_photo', models.CharField(max_length=256)),
-                ('timestamp_created', models.DateTimeField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=256)),
+                ("thread_photo", models.CharField(max_length=256)),
+                ("timestamp_created", models.DateTimeField()),
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('mobile_number', models.IntegerField()),
-                ('pin', models.CharField(max_length=256)),
-                ('photo', models.CharField(max_length=256)),
-                ('status', models.CharField(max_length=256)),
-                ('birth_date', models.DateField()),
-                ('gender', models.CharField(max_length=256)),
-                ('timestamp_created', models.CharField(max_length=256)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile_user', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("mobile_number", models.IntegerField()),
+                ("pin", models.CharField(max_length=256)),
+                ("photo", models.CharField(max_length=256)),
+                ("status", models.CharField(max_length=256)),
+                ("birth_date", models.DateField()),
+                ("gender", models.CharField(max_length=256)),
+                ("timestamp_created", models.CharField(max_length=256)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="profile_user",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

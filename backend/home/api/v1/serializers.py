@@ -1,5 +1,12 @@
 from django.contrib.auth import get_user_model
-from home.models import Contact, Profile, Thread, ThreadAction, VerificationCode
+from home.models import (
+    Contact,
+    Profile,
+    Thread,
+    Thread_members,
+    ThreadAction,
+    VerificationCode,
+)
 from django.http import HttpRequest
 from django.utils.translation import ugettext_lazy as _
 from allauth.account import app_settings as allauth_settings
@@ -103,4 +110,10 @@ class ThreadSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
+        fields = "__all__"
+
+
+class Thread_membersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Thread_members
         fields = "__all__"

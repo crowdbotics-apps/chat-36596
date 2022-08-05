@@ -4,6 +4,7 @@ from .viewsets import (
     ContactViewSet,
     ProfileViewSet,
     ThreadViewSet,
+    Thread_membersViewSet,
     ThreadActionViewSet,
     VerificationCodeViewSet,
 )
@@ -21,6 +22,7 @@ router.register("contact", ContactViewSet)
 router.register("threadaction", ThreadActionViewSet)
 router.register("thread", ThreadViewSet)
 router.register("profile", ProfileViewSet)
+router.register("thread_members", Thread_membersViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),

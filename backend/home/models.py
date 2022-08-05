@@ -49,24 +49,24 @@ class ThreadAction(models.Model):
     action = models.CharField(
         max_length=256,
     )
-    thread = models.OneToOneField(
-        "home.ThreadAction",
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name="threadaction_thread",
-    )
-    profile = models.OneToOneField(
-        "home.ThreadAction",
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name="threadaction_profile",
-    )
     timestamp_action = models.CharField(
         null=True,
         blank=True,
         max_length=256,
+    )
+    profile = models.OneToOneField(
+        "home.Profile",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="threadaction_profile",
+    )
+    thread = models.OneToOneField(
+        "home.Thread",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="threadaction_thread",
     )
 
 
@@ -104,4 +104,30 @@ class Profile(models.Model):
     )
     timestamp_created = models.CharField(
         max_length=256,
+    )
+
+
+class Thread_members(models.Model):
+    "Generated Model"
+    is_admin = models.CharField(
+        max_length=256,
+    )
+    timestamp_joined = models.DateTimeField()
+    timestamp_left = models.DateTimeField()
+    last_rejoined = models.CharField(
+        max_length=256,
+    )
+    profile = models.OneToOneField(
+        "home.Profile",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="thread_members_profile",
+    )
+    thread = models.OneToOneField(
+        "home.Thread",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="thread_members_thread",
     )

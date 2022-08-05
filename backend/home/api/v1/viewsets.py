@@ -1,9 +1,17 @@
 from rest_framework import viewsets
-from home.models import Contact, Profile, Thread, ThreadAction, VerificationCode
+from home.models import (
+    Contact,
+    Profile,
+    Thread,
+    Thread_members,
+    ThreadAction,
+    VerificationCode,
+)
 from .serializers import (
     ContactSerializer,
     ProfileSerializer,
     ThreadSerializer,
+    Thread_membersSerializer,
     ThreadActionSerializer,
     VerificationCodeSerializer,
 )
@@ -83,3 +91,12 @@ class ProfileViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Profile.objects.all()
+
+
+class Thread_membersViewSet(viewsets.ModelViewSet):
+    serializer_class = Thread_membersSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Thread_members.objects.all()
