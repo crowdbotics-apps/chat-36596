@@ -1,3 +1,12 @@
+from .models import (
+    Contact,
+    Profile,
+    Thread,
+    Thread_members,
+    ThreadAction,
+    VerificationCode,
+)
+from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.shortcuts import render
 
 

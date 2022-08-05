@@ -56,16 +56,16 @@ class ThreadAction(models.Model):
     )
     profile = models.OneToOneField(
         "home.Profile",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="threadaction_profile",
     )
     thread = models.OneToOneField(
         "home.Thread",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="threadaction_thread",
     )
 
@@ -119,15 +119,15 @@ class Thread_members(models.Model):
     )
     profile = models.OneToOneField(
         "home.Profile",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="thread_members_profile",
     )
     thread = models.OneToOneField(
         "home.Thread",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="thread_members_thread",
     )

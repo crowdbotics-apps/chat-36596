@@ -7,30 +7,68 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0003_profile_thread'),
+        ("home", "0003_profile_thread"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='threadaction',
-            name='profile',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='threadaction_profile', to='home.Profile'),
+            model_name="threadaction",
+            name="profile",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="threadaction_profile",
+                to="home.Profile",
+            ),
         ),
         migrations.AlterField(
-            model_name='threadaction',
-            name='thread',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='threadaction_thread', to='home.Thread'),
+            model_name="threadaction",
+            name="thread",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="threadaction_thread",
+                to="home.Thread",
+            ),
         ),
         migrations.CreateModel(
-            name='Thread_members',
+            name="Thread_members",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_admin', models.CharField(max_length=256)),
-                ('timestamp_joined', models.DateTimeField()),
-                ('timestamp_left', models.DateTimeField()),
-                ('last_rejoined', models.CharField(max_length=256)),
-                ('profile', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='thread_members_profile', to='home.Profile')),
-                ('thread', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='thread_members_thread', to='home.Thread')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_admin", models.CharField(max_length=256)),
+                ("timestamp_joined", models.DateTimeField()),
+                ("timestamp_left", models.DateTimeField()),
+                ("last_rejoined", models.CharField(max_length=256)),
+                (
+                    "profile",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="thread_members_profile",
+                        to="home.Profile",
+                    ),
+                ),
+                (
+                    "thread",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="thread_members_thread",
+                        to="home.Thread",
+                    ),
+                ),
             ],
         ),
     ]
