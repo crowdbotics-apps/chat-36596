@@ -1,3 +1,11 @@
+from rest_framework import viewsets
+from home.models import Contact, ThreadAction, VerificationCode
+from .serializers import (
+    ContactSerializer,
+    ThreadActionSerializer,
+    VerificationCodeSerializer,
+)
+from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
 from rest_framework.authtoken.models import Token
@@ -28,3 +36,30 @@ class LoginViewSet(ViewSet):
         token, created = Token.objects.get_or_create(user=user)
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
+
+
+class VerificationCodeViewSet(viewsets.ModelViewSet):
+    serializer_class = VerificationCodeSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = VerificationCode.objects.all()
+
+
+class ContactViewSet(viewsets.ModelViewSet):
+    serializer_class = ContactSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Contact.objects.all()
+
+
+class ThreadActionViewSet(viewsets.ModelViewSet):
+    serializer_class = ThreadActionSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = ThreadAction.objects.all()

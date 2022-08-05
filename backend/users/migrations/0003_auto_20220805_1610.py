@@ -6,38 +6,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0002_auto_20220805_1553'),
+        ("users", "0002_auto_20220805_1553"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='user',
-            old_name='city',
-            new_name='phone_no',
+            model_name="user",
+            old_name="city",
+            new_name="phone_no",
         ),
         migrations.RenameField(
-            model_name='user',
-            old_name='phone_number',
-            new_name='timestamp_created',
+            model_name="user",
+            old_name="phone_number",
+            new_name="timestamp_created",
         ),
         migrations.AddField(
-            model_name='user',
-            name='last_updated',
+            model_name="user",
+            name="last_updated",
             field=models.TimeField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='email',
+            model_name="user",
+            name="email",
             field=models.CharField(blank=True, max_length=256, null=True),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='first_name',
+            model_name="user",
+            name="first_name",
             field=models.CharField(blank=True, max_length=256, null=True),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='last_name',
+            model_name="user",
+            name="last_name",
             field=models.CharField(blank=True, max_length=256, null=True),
         ),
     ]
