@@ -2,6 +2,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .viewsets import (
     ContactViewSet,
+    HomePageViewSet,
+    MessageViewSet,
     ProfileViewSet,
     ThreadViewSet,
     Thread_membersViewSet,
@@ -23,6 +25,8 @@ router.register("threadaction", ThreadActionViewSet)
 router.register("thread", ThreadViewSet)
 router.register("profile", ProfileViewSet)
 router.register("thread_members", Thread_membersViewSet)
+router.register("message", MessageViewSet)
+router.register("homepage", HomePageViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),

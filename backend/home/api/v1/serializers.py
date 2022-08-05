@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from home.models import (
     Contact,
+    HomePage,
+    Message,
     Profile,
     Thread,
     Thread_members,
@@ -116,4 +118,16 @@ class ProfileSerializer(serializers.ModelSerializer):
 class Thread_membersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Thread_members
+        fields = "__all__"
+
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = "__all__"
+
+
+class HomePageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HomePage
         fields = "__all__"
