@@ -1,8 +1,11 @@
 from rest_framework import viewsets
 from home.models import (
     Contact,
+    CustomerText,
+    ForwordedMessage,
     HomePage,
     Message,
+    MessageAction,
     Profile,
     Thread,
     Thread_members,
@@ -11,8 +14,11 @@ from home.models import (
 )
 from .serializers import (
     ContactSerializer,
+    CustomerTextSerializer,
+    ForwordedMessageSerializer,
     HomePageSerializer,
     MessageSerializer,
+    MessageActionSerializer,
     ProfileSerializer,
     ThreadSerializer,
     Thread_membersSerializer,
@@ -122,3 +128,30 @@ class HomePageViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = HomePage.objects.all()
+
+
+class MessageActionViewSet(viewsets.ModelViewSet):
+    serializer_class = MessageActionSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = MessageAction.objects.all()
+
+
+class CustomerTextViewSet(viewsets.ModelViewSet):
+    serializer_class = CustomerTextSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = CustomerText.objects.all()
+
+
+class ForwordedMessageViewSet(viewsets.ModelViewSet):
+    serializer_class = ForwordedMessageSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = ForwordedMessage.objects.all()

@@ -172,3 +172,48 @@ class HomePage(models.Model):
     body = models.CharField(
         max_length=256,
     )
+
+
+class MessageAction(models.Model):
+    "Generated Model"
+    action = models.CharField(
+        max_length=256,
+    )
+    message = models.OneToOneField(
+        "home.Message",
+        on_delete=models.CASCADE,
+        related_name="messageaction_message",
+    )
+    profile = models.OneToOneField(
+        "home.Profile",
+        on_delete=models.CASCADE,
+        related_name="messageaction_profile",
+    )
+    timestamp_action = models.DateTimeField()
+
+
+class CustomerText(models.Model):
+    "Generated Model"
+    title = models.CharField(
+        max_length=256,
+    )
+
+
+class ForwordedMessage(models.Model):
+    "Generated Model"
+    messege = models.OneToOneField(
+        "home.Message",
+        on_delete=models.CASCADE,
+        related_name="forwordedmessage_messege",
+    )
+    forworded_by = models.OneToOneField(
+        "home.Profile",
+        on_delete=models.CASCADE,
+        related_name="forwordedmessage_forworded_by",
+    )
+    forworded_to = models.OneToOneField(
+        "home.Thread",
+        on_delete=models.CASCADE,
+        related_name="forwordedmessage_forworded_to",
+    )
+    timestamp_forworded = models.DateTimeField()

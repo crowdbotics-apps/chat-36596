@@ -7,31 +7,61 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0004_auto_20220805_1631'),
+        ("home", "0004_auto_20220805_1631"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='HomePage',
+            name="HomePage",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('body', models.CharField(max_length=256)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("body", models.CharField(max_length=256)),
             ],
         ),
         migrations.CreateModel(
-            name='Message',
+            name="Message",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('meaasge', models.CharField(max_length=256)),
-                ('attachment', models.CharField(max_length=256)),
-                ('is_draft', models.CharField(max_length=256)),
-                ('is_delevered', models.CharField(max_length=256)),
-                ('is_read', models.CharField(max_length=256)),
-                ('timestamp_created', models.DateTimeField()),
-                ('timestamp_updated', models.DateTimeField()),
-                ('timestamp_read', models.CharField(max_length=256)),
-                ('sent_by', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='message_sent_by', to='home.Thread_members')),
-                ('thread', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='message_thread', to='home.Thread')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("meaasge", models.CharField(max_length=256)),
+                ("attachment", models.CharField(max_length=256)),
+                ("is_draft", models.CharField(max_length=256)),
+                ("is_delevered", models.CharField(max_length=256)),
+                ("is_read", models.CharField(max_length=256)),
+                ("timestamp_created", models.DateTimeField()),
+                ("timestamp_updated", models.DateTimeField()),
+                ("timestamp_read", models.CharField(max_length=256)),
+                (
+                    "sent_by",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="message_sent_by",
+                        to="home.Thread_members",
+                    ),
+                ),
+                (
+                    "thread",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="message_thread",
+                        to="home.Thread",
+                    ),
+                ),
             ],
         ),
     ]
