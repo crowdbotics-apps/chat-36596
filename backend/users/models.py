@@ -23,18 +23,32 @@ class User(AbstractUser):
         blank=True,
         max_length=255,
     )
-    email = models.EmailField(
-        max_length=254,
-        null=True,
-        blank=True,
-    )
-    phone_number = models.CharField(
+    first_name = models.CharField(
         max_length=256,
         null=True,
         blank=True,
     )
-    city = models.CharField(
+    last_name = models.CharField(
         max_length=256,
+        null=True,
+        blank=True,
+    )
+    email = models.CharField(
+        max_length=256,
+        null=True,
+        blank=True,
+    )
+    phone_no = models.CharField(
+        max_length=256,
+        null=True,
+        blank=True,
+    )
+    timestamp_created = models.CharField(
+        max_length=256,
+        null=True,
+        blank=True,
+    )
+    last_updated = models.TimeField(
         null=True,
         blank=True,
     )
