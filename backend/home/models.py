@@ -51,20 +51,57 @@ class ThreadAction(models.Model):
     )
     thread = models.OneToOneField(
         "home.ThreadAction",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="threadaction_thread",
     )
     profile = models.OneToOneField(
         "home.ThreadAction",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="threadaction_profile",
     )
     timestamp_action = models.CharField(
-        max_length=256,
         null=True,
         blank=True,
+        max_length=256,
+    )
+
+
+class Thread(models.Model):
+    "Generated Model"
+    name = models.CharField(
+        max_length=256,
+    )
+    thread_photo = models.CharField(
+        max_length=256,
+    )
+    timestamp_created = models.DateTimeField()
+
+
+class Profile(models.Model):
+    "Generated Model"
+    user = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="profile_user",
+    )
+    mobile_number = models.IntegerField()
+    pin = models.CharField(
+        max_length=256,
+    )
+    photo = models.CharField(
+        max_length=256,
+    )
+    status = models.CharField(
+        max_length=256,
+    )
+    birth_date = models.DateField()
+    gender = models.CharField(
+        max_length=256,
+    )
+    timestamp_created = models.CharField(
+        max_length=256,
     )

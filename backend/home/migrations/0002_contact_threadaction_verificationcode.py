@@ -11,40 +11,99 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('home', '0001_load_initial_data'),
+        ("home", "0001_load_initial_data"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('added_profile', models.CharField(max_length=256)),
-                ('is_blocked', models.CharField(max_length=256)),
-                ('is_favourite', models.CharField(max_length=256)),
-                ('timestamp_created', models.CharField(max_length=256)),
-                ('added_by', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='contact_added_by', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("added_profile", models.CharField(max_length=256)),
+                ("is_blocked", models.CharField(max_length=256)),
+                ("is_favourite", models.CharField(max_length=256)),
+                ("timestamp_created", models.CharField(max_length=256)),
+                (
+                    "added_by",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="contact_added_by",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='VerificationCode',
+            name="VerificationCode",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(max_length=256)),
-                ('is_verified', models.CharField(max_length=256)),
-                ('timestamp_created', models.CharField(max_length=256)),
-                ('timestamp_verified', models.CharField(max_length=256)),
-                ('sent_to', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='verificationcode_sent_to', to='home.Contact')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("code", models.CharField(max_length=256)),
+                ("is_verified", models.CharField(max_length=256)),
+                ("timestamp_created", models.CharField(max_length=256)),
+                ("timestamp_verified", models.CharField(max_length=256)),
+                (
+                    "sent_to",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="verificationcode_sent_to",
+                        to="home.Contact",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ThreadAction',
+            name="ThreadAction",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('action', models.CharField(max_length=256)),
-                ('timestamp_action', models.CharField(blank=True, max_length=256, null=True)),
-                ('profile', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='threadaction_profile', to='home.ThreadAction')),
-                ('thread', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='threadaction_thread', to='home.ThreadAction')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("action", models.CharField(max_length=256)),
+                (
+                    "timestamp_action",
+                    models.CharField(blank=True, max_length=256, null=True),
+                ),
+                (
+                    "profile",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="threadaction_profile",
+                        to="home.ThreadAction",
+                    ),
+                ),
+                (
+                    "thread",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="threadaction_thread",
+                        to="home.ThreadAction",
+                    ),
+                ),
             ],
         ),
     ]
