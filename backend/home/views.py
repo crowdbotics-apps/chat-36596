@@ -1,10 +1,15 @@
 from .models import (
-    Contact,
     Profile,
-    Thread,
-    Thread_members,
+    HomePage,
     ThreadAction,
+    CustomerText,
+    ForwordedMessage,
+    Thread_members,
+    MessageAction,
     VerificationCode,
+    Contact,
+    Thread,
+    Message,
 )
 from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.shortcuts import render

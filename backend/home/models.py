@@ -135,9 +135,6 @@ class Thread_members(models.Model):
 
 class Message(models.Model):
     "Generated Model"
-    meaasge = models.CharField(
-        max_length=256,
-    )
     thread = models.OneToOneField(
         "home.Thread",
         on_delete=models.CASCADE,
@@ -164,6 +161,11 @@ class Message(models.Model):
     timestamp_updated = models.DateTimeField()
     timestamp_read = models.CharField(
         max_length=256,
+    )
+    message = models.CharField(
+        max_length=256,
+        null=True,
+        blank=True,
     )
 
 
